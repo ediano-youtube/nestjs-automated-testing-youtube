@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: nestjs_automated_testing_youtube_postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: development
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: '256M'
+
+volumes:
+  postgres:
+    driver: local
+
+networks:
+  default:
+    name: nestjs_automated_testing_youtube_network_default

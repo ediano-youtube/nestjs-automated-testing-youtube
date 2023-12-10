@@ -4,6 +4,7 @@
 	"name": "Node.js & TypeScript",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-18-bookworm",
+	"runArgs": ["--network=nestjs_automated_testing_youtube_network_default"],
 	"features": {
 		"ghcr.io/meaningful-ooo/devcontainer-features/fish:1": {},
 		"ghcr.io/devcontainers-contrib/features/fish-apt-get:1": {},

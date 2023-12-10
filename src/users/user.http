@@ -1,0 +1,30 @@
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+  "name": "Ediano",
+  "email": "ediano@gmail.com",
+  "password": "123456"
+}
+
+####
+
+GET http://localhost:3333/users
+
+###
+GET http://localhost:3333/users/6d6379c8-916a-4598-ace8-28158d3c2d91
+
+###
+
+PATCH  http://localhost:3333/users/6d6379c8-916a-4598-ace8-28158d3c2d91
+Content-Type: application/json
+
+{
+  "name": "Ediano",
+  "email": "silva@gmail.com",
+  "password": "123"
+}
+
+###
+
+DELETE   http://localhost:3333/users/6d6379c8-916a-4598-ace8-28158d3c2d91

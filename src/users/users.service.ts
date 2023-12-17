@@ -3,10 +3,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 import { PrismaService } from '../prisma/prisma.service';
+import { EmailService } from '../email/email.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly emailService: EmailService,
+  ) {}
 
   async create(createUserDto: CreateUserDto) {
     const userExists = await this.prismaService.user.findUnique({
@@ -24,6 +28,8 @@ export class UsersService {
         passwordHash: createUserDto.password,
       },
     });
+
+    await this.emailService.send(user);
 
     return user;
   }

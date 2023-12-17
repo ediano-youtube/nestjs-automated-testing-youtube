@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  api:
+    volumes:
+      - .:/home/node/api:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+ 

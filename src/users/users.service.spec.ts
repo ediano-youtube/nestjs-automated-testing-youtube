@@ -4,6 +4,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { HttpException } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { EmailService } from '../email/email.service';
 
 const uuid = '0f8618ca-8b4b-48dd-bd47-65d290294861';
 
@@ -20,11 +21,16 @@ describe('UsersService', () => {
     },
   };
 
+  const mockEmailService = {
+    send: jest.fn(),
+  };
+
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UsersService,
         { provide: PrismaService, useValue: mockPrismaService },
+        { provide: EmailService, useValue: mockEmailService },
       ],
     }).compile();
 
